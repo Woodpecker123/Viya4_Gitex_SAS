@@ -82590,8 +82590,6 @@ spec:
     security.client.auth: oauth2.client_credentials
     security.oauth2.client.server_url: http://sas-logon-app/SASLogon/oauth/token
     security.server.internal_paths: metrics
-    server.disableTrace: "true"
-    server.mas-threads: 0
     server.store-location: /mnt/data
   limits:
     maxCpu: "2"
@@ -82972,7 +82970,7 @@ spec:
         name: ((PROJECT_SERVICE_NAME))
         namespace: ((PROJECT_NAMESPACE))
       spec:
-        ingressClassName: class1
+        ingressClassName: nginx
         rules:
         - host: ((PUBLIC_HOST_NAME))
           http:
@@ -83140,7 +83138,7 @@ metadata:
   name: sas-activities
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -83188,7 +83186,7 @@ metadata:
   name: sas-analytics-components
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -83236,7 +83234,7 @@ metadata:
   name: sas-analytics-data-segmentation
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -83282,7 +83280,7 @@ metadata:
   name: sas-analytics-events
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -83330,7 +83328,7 @@ metadata:
   name: sas-analytics-execution
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -83378,7 +83376,7 @@ metadata:
   name: sas-analytics-flows
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -83424,7 +83422,7 @@ metadata:
   name: sas-analytics-gateway
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -83472,7 +83470,7 @@ metadata:
   name: sas-analytics-localization
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -83518,7 +83516,7 @@ metadata:
   name: sas-analytics-pipelines
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -83566,7 +83564,7 @@ metadata:
   name: sas-analytics-validation
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -83612,7 +83610,7 @@ metadata:
   name: sas-annotations
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -83658,7 +83656,7 @@ metadata:
   name: sas-app-registry
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -83704,7 +83702,7 @@ metadata:
   name: sas-audit
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -83750,7 +83748,7 @@ metadata:
   name: sas-authorization
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -83796,7 +83794,7 @@ metadata:
   name: sas-batch
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -83843,7 +83841,7 @@ metadata:
   name: sas-business-rules
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -83890,7 +83888,7 @@ metadata:
   name: sas-cas-access-management
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -83937,7 +83935,7 @@ metadata:
   name: sas-cas-formats
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -83985,7 +83983,7 @@ metadata:
   name: sas-cas-management
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84032,7 +84030,7 @@ metadata:
   name: sas-cas-proxy
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84079,7 +84077,7 @@ metadata:
   name: sas-cas-row-sets
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84125,7 +84123,7 @@ metadata:
   name: sas-catalog
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84171,7 +84169,7 @@ metadata:
   name: sas-catalog-table-bot
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84217,7 +84215,7 @@ metadata:
   name: sas-category-execution-provider
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84263,7 +84261,7 @@ metadata:
   name: sas-category-taxonomy
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84309,7 +84307,7 @@ metadata:
   name: sas-code-debugger
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84355,7 +84353,7 @@ metadata:
   name: sas-code-debugger-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84401,7 +84399,7 @@ metadata:
   name: sas-comments
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84448,7 +84446,7 @@ metadata:
   name: sas-compute
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84494,7 +84492,7 @@ metadata:
   name: sas-concept-execution-provider
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84540,7 +84538,7 @@ metadata:
   name: sas-concept-taxonomy
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84586,7 +84584,7 @@ metadata:
   name: sas-concepts
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84632,7 +84630,7 @@ metadata:
   name: sas-config-reconciler
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84678,7 +84676,7 @@ metadata:
   name: sas-configuration
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84724,7 +84722,7 @@ metadata:
   name: sas-connect
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84771,7 +84769,7 @@ metadata:
   name: sas-credentials
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84817,7 +84815,7 @@ metadata:
   name: sas-crossdomainproxy
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84864,7 +84862,7 @@ metadata:
   name: sas-data-agent-content
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84911,7 +84909,7 @@ metadata:
   name: sas-data-agent-management
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -84957,7 +84955,7 @@ metadata:
   name: sas-data-agent-server-colocated
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85004,7 +85002,7 @@ metadata:
   name: sas-data-connections
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85050,7 +85048,7 @@ metadata:
   name: sas-data-discovery
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85098,7 +85096,7 @@ metadata:
   name: sas-data-explorer-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85145,7 +85143,7 @@ metadata:
   name: sas-data-flows
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85191,7 +85189,7 @@ metadata:
   name: sas-data-mining
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85237,7 +85235,7 @@ metadata:
   name: sas-data-mining-models
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85283,7 +85281,7 @@ metadata:
   name: sas-data-mining-project-resources
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85329,7 +85327,7 @@ metadata:
   name: sas-data-mining-project-settings
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85375,7 +85373,7 @@ metadata:
   name: sas-data-mining-results
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85421,7 +85419,7 @@ metadata:
   name: sas-data-mining-risk-models
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85467,7 +85465,7 @@ metadata:
   name: sas-data-mining-warehouse
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85514,7 +85512,7 @@ metadata:
   name: sas-data-plans
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85561,7 +85559,7 @@ metadata:
   name: sas-data-quality
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85608,7 +85606,7 @@ metadata:
   name: sas-data-sources
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85654,7 +85652,7 @@ metadata:
   name: sas-data-studio-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85701,7 +85699,7 @@ metadata:
   name: sas-data-tables
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85748,7 +85746,7 @@ metadata:
   name: sas-decision-manager-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85795,7 +85793,7 @@ metadata:
   name: sas-decisions
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85841,7 +85839,7 @@ metadata:
   name: sas-decisions-runtime-builder
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85887,7 +85885,7 @@ metadata:
   name: sas-deployment-data
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85933,7 +85931,7 @@ metadata:
   name: sas-device-management
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -85979,7 +85977,7 @@ metadata:
   name: sas-discovery-table-provider
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86025,7 +86023,7 @@ metadata:
   name: sas-documents
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86072,7 +86070,7 @@ metadata:
   name: sas-drive
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86118,7 +86116,7 @@ metadata:
   name: sas-drive-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86178,7 +86176,7 @@ metadata:
   name: sas-environment-manager-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86224,7 +86222,7 @@ metadata:
   name: sas-event-monitor
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86270,7 +86268,7 @@ metadata:
   name: sas-event-stream-manager-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86316,7 +86314,7 @@ metadata:
   name: sas-event-stream-processing-metering-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86362,7 +86360,7 @@ metadata:
   name: sas-event-stream-processing-streamviewer-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86408,7 +86406,7 @@ metadata:
   name: sas-event-stream-processing-studio-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86454,7 +86452,7 @@ metadata:
   name: sas-feature-flags
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86500,7 +86498,7 @@ metadata:
   name: sas-files
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86546,7 +86544,7 @@ metadata:
   name: sas-folders
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86592,7 +86590,7 @@ metadata:
   name: sas-fonts
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86638,7 +86636,7 @@ metadata:
   name: sas-forecasting-comparison
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86684,7 +86682,7 @@ metadata:
   name: sas-forecasting-data-definition
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86730,7 +86728,7 @@ metadata:
   name: sas-forecasting-events
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86776,7 +86774,7 @@ metadata:
   name: sas-forecasting-exploration
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86822,7 +86820,7 @@ metadata:
   name: sas-forecasting-filters
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86868,7 +86866,7 @@ metadata:
   name: sas-forecasting-gateway
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86914,7 +86912,7 @@ metadata:
   name: sas-forecasting-models
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -86960,7 +86958,7 @@ metadata:
   name: sas-forecasting-overrides
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87006,7 +87004,7 @@ metadata:
   name: sas-forecasting-pipelines
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87052,7 +87050,7 @@ metadata:
   name: sas-formats
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87098,7 +87096,7 @@ metadata:
   name: sas-geo-enrichment
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87144,7 +87142,7 @@ metadata:
   name: sas-glossary
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87190,7 +87188,7 @@ metadata:
   name: sas-graph-builder-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87236,7 +87234,7 @@ metadata:
   name: sas-graph-templates
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87283,7 +87281,7 @@ metadata:
   name: sas-identities
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87329,7 +87327,7 @@ metadata:
   name: sas-import-9
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87375,7 +87373,7 @@ metadata:
   name: sas-information-catalog-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87421,7 +87419,7 @@ metadata:
   name: sas-insights
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87467,7 +87465,7 @@ metadata:
   name: sas-job-definitions
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87513,7 +87511,7 @@ metadata:
   name: sas-job-execution
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87559,7 +87557,7 @@ metadata:
   name: sas-job-execution-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87605,7 +87603,7 @@ metadata:
   name: sas-job-flow-scheduling
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87651,7 +87649,7 @@ metadata:
   name: sas-launcher
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87697,7 +87695,7 @@ metadata:
   name: sas-licenses
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87744,7 +87742,7 @@ metadata:
   name: sas-lineage-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87790,7 +87788,7 @@ metadata:
   name: sas-links
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87836,7 +87834,7 @@ metadata:
   name: sas-list-data
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87882,7 +87880,7 @@ metadata:
   name: sas-localization
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87930,7 +87928,7 @@ metadata:
   name: sas-logon-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -87976,7 +87974,7 @@ metadata:
   name: sas-mail
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88022,7 +88020,7 @@ metadata:
   name: sas-maps
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88068,7 +88066,7 @@ metadata:
   name: sas-metering
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88114,7 +88112,7 @@ metadata:
   name: sas-microanalytic-score
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88160,7 +88158,7 @@ metadata:
   name: sas-ml-pipeline-automation
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88206,7 +88204,7 @@ metadata:
   name: sas-model-management
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88252,7 +88250,7 @@ metadata:
   name: sas-model-manager-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88298,7 +88296,7 @@ metadata:
   name: sas-model-publish
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88344,7 +88342,7 @@ metadata:
   name: sas-model-repository
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88390,7 +88388,7 @@ metadata:
   name: sas-model-studio-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88443,7 +88441,7 @@ metadata:
   name: sas-natural-language-generation
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88489,7 +88487,7 @@ metadata:
   name: sas-notifications
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88535,7 +88533,7 @@ metadata:
   name: sas-office-addin-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88581,7 +88579,7 @@ metadata:
   name: sas-parse-execution-provider
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88627,7 +88625,7 @@ metadata:
   name: sas-preferences
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88674,7 +88672,7 @@ metadata:
   name: sas-qkb-management
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88721,7 +88719,7 @@ metadata:
   name: sas-reference-data
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88767,7 +88765,7 @@ metadata:
   name: sas-relationships
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88814,7 +88812,7 @@ metadata:
   name: sas-report-alerts
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88861,7 +88859,7 @@ metadata:
   name: sas-report-data
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88907,7 +88905,7 @@ metadata:
   name: sas-report-distribution
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88953,7 +88951,7 @@ metadata:
   name: sas-report-images
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -88999,7 +88997,7 @@ metadata:
   name: sas-report-operations
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89046,7 +89044,7 @@ metadata:
   name: sas-report-packages
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89092,7 +89090,7 @@ metadata:
   name: sas-report-renderer
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89139,7 +89137,7 @@ metadata:
   name: sas-report-templates
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89186,7 +89184,7 @@ metadata:
   name: sas-report-transforms
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89234,7 +89232,7 @@ metadata:
   name: sas-reports
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89281,7 +89279,7 @@ metadata:
   name: sas-row-sets
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89327,7 +89325,7 @@ metadata:
   name: sas-scheduler
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89374,7 +89372,7 @@ metadata:
   name: sas-score-definitions
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89421,7 +89419,7 @@ metadata:
   name: sas-score-execution
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89467,7 +89465,7 @@ metadata:
   name: sas-search
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89513,7 +89511,7 @@ metadata:
   name: sas-search-index
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89559,7 +89557,7 @@ metadata:
   name: sas-sentiment-execution-provider
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89606,7 +89604,7 @@ metadata:
   name: sas-studio
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89653,7 +89651,7 @@ metadata:
   name: sas-studio-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89700,7 +89698,7 @@ metadata:
   name: sas-studio-development
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89747,7 +89745,7 @@ metadata:
   name: sas-subject-contacts
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89793,7 +89791,7 @@ metadata:
   name: sas-templates
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89839,7 +89837,7 @@ metadata:
   name: sas-terms-management
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89885,7 +89883,7 @@ metadata:
   name: sas-text-analytics
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89931,7 +89929,7 @@ metadata:
   name: sas-text-analytics-execution
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -89977,7 +89975,7 @@ metadata:
   name: sas-text-analytics-provider
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -90023,7 +90021,7 @@ metadata:
   name: sas-theme-content
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -90069,7 +90067,7 @@ metadata:
   name: sas-theme-designer-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -90115,7 +90113,7 @@ metadata:
   name: sas-themes
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -90161,7 +90159,7 @@ metadata:
   name: sas-thumbnails
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -90207,7 +90205,7 @@ metadata:
   name: sas-topic-execution-provider
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -90253,7 +90251,7 @@ metadata:
   name: sas-topic-management
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -90299,7 +90297,7 @@ metadata:
   name: sas-transfer
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -90346,7 +90344,7 @@ metadata:
   name: sas-transformations
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -90393,7 +90391,7 @@ metadata:
   name: sas-treatment-definitions
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -90439,7 +90437,7 @@ metadata:
   name: sas-types
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -90485,7 +90483,7 @@ metadata:
   name: sas-visual-analytics
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -90531,7 +90529,7 @@ metadata:
   name: sas-visual-analytics-administration
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -90577,7 +90575,7 @@ metadata:
   name: sas-visual-analytics-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -90623,7 +90621,7 @@ metadata:
   name: sas-web-data-access
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -90670,7 +90668,7 @@ metadata:
   name: sas-webhooks
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -90716,7 +90714,7 @@ metadata:
   name: sas-workflow
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -90762,7 +90760,7 @@ metadata:
   name: sas-workflow-definition
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -90808,7 +90806,7 @@ metadata:
   name: sas-workflow-history
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -90854,7 +90852,7 @@ metadata:
   name: sas-workflow-manager-app
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:
@@ -90903,7 +90901,7 @@ metadata:
   name: sas-workload-orchestrator
   namespace: sit
 spec:
-  ingressClassName: class1
+  ingressClassName: nginx
   rules:
   - host: sit.woodpecker.com
     http:

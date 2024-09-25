@@ -30,7 +30,7 @@ transformers:
 #- sas-bases/examples/sas-workload-orchestrator/enable-disable/sas-workload-orchestrator-disable-patch-transformer.yaml
 #- site-config/require-compute-label.yaml
 #- site-config/sas-esp-operator/espconfig/espconfig-env-variables.yaml
-- site-config/sas-esp-operator/espconfig/espconfig-properties.yaml
+#- site-config/sas-esp-operator/espconfig/espconfig-properties.yaml
 - site-config/cas-server/cas-enable-external-services.yaml
 - sas-bases/examples/sas-workload-orchestrator/enable-disable/sas-workload-orchestrator-disable-patch-transformer.yaml
 patches:
