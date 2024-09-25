@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" type="text/css" href="sas.css"/>
+        <title>Restore Scripts</title>
+    </head>
+    <body>
+        <h1 id="139675612125648restore-scripts">Restore Scripts</h1>
+<h2 id="139675612125648overview">Overview</h2>
+<p>This README file contains information about the execution of scripts that are potentially required for restoring the SAS Viya Platform from a backup.</p>
+<h2 id="139675612125648append-the-execute-permissions-to-scripts">Append the Execute Permissions to Scripts</h2>
+<p>To execute the scripts below, append the execute permission to both by running the following command.</p>
+<pre><code> ```bash
+ chmod +x ./sas-backup-pv-copy-cleanup.sh ./scale-up-cas.sh
+ ```
+</code></pre>
+<h2 id="139675612125648clean-up-cas-persistent-volumes">Clean Up CAS Persistent Volumes</h2>
+<p>Persistent volumes are used by the CAS server for restoring CAS data for each tenant. To clean up the CAS persistent volumes after the restore job has completed, execute the sas-backup-pv-copy-cleanup.sh bash script with three arguments: namespace, operation to perform, and a comma-separated list of tenants.</p>
+<pre><code> ```bash
+  ./sas-backup-pv-copy-cleanup.sh [namespace] [operation] "[tenants]"
+ ```
+
+ Example for a Multi-Tenant Deployment
+
+ ```bash
+ ./sas-backup-pv-copy-cleanup.sh viya04 remove "provider,acme,cyberdyne"
+ ```
+
+ Example for a Non-Multi-Tenant Deployment
+
+ ```bash
+ ./sas-backup-pv-copy-cleanup.sh viya04 remove "default"
+ ```
+</code></pre>
+<p><strong>Note:</strong> The tenant name for a non-multi-deployment can be either &ldquo;default&rdquo; or &ldquo;provider&rdquo;.</p>
+<h2 id="139675612125648copy-backup-data-to-sas-common-backup-data-persistentvolume">Copy Backup Data to sas-common-backup-data PersistentVolume</h2>
+<p>You can also use a Kubernetes job (sas-backup-pv-copy-cleanup-job) to copy backup data to the sas-common-backup-data PersistentVolume.</p>
+<ol>
+<li>
+<p>To create a copy job from the cronjob sas-backup-pv-copy-cleanup-job, execute the sas-backup-pv-copy-cleanup.sh script with three arguments: namespace, operation to perform, and a comma-separated list of tenants.</p>
+<pre class="highlight"><code class="language-bash"> ./sas-backup-pv-copy-cleanup.sh [namespace] [operation] "[tenants]"</code></pre>
+
+<p>Example for a Multi-Tenant Deployment</p>
+<pre class="highlight"><code class="language-bash"> ./sas-backup-pv-copy-cleanup.sh viya04 copy "provider,acme,cyberdyne"</code></pre>
+
+<p>Example for a Non-Multi-Tenant Deployment</p>
+<pre class="highlight"><code class="language-bash">./sas-backup-pv-copy-cleanup.sh viya04 copy "default"</code></pre>
+
+</li>
+</ol>
+<p><strong>Note:</strong> The tenant name for a non-multi deployment can be either &ldquo;default&rdquo; or &ldquo;provider&rdquo;.</p>
+<ol>
+<li>
+<p>The script creates a copy job for each tenant that is included in the comma-separated list of tenants. Check for the sas-backup-pv-copy-cleanup-job pod that is created for each individual tenant.</p>
+<p><pre class="highlight"><code class="language-bash">kubectl -n name-of-namespace get pod | grep -i sas-backup-pv-copy-cleanup</code></pre>
+If you do not see the results you expect, see the console output of the sas-backup-pv-copy-cleanup.sh script.</p>
+</li>
+</ol>
+<p>The copy job pod mounts two persistent volumes (PVs) per tenant, per CAS instance. The &lsquo;sas-common-backup-data&rsquo; PV is mounted at &lsquo;/sasviyabackup&rsquo; and the &lsquo;sas-cas-backup-data&rsquo; PV is mounted at &lsquo;/cas&rsquo;.</p>
+<h2 id="139675612125648scaling-cas-deployments">Scaling CAS Deployments</h2>
+<p>To scale up the CAS deployments that are used to restore CAS data for each tenant, execute the scale-up-cas.sh bash script with two arguments: namespace and a comma-separated list of tenants.</p>
+<pre><code> ```bash
+  ./scale-up-cas.sh [namespace] "[tenants]"
+ ```
+
+ Example for a Multi-Tenant Deployment
+
+ ```bash
+  ./scale-up-cas.sh viya04 "provider,acme,cyberdyne"
+ ```
+
+ Example for a Non-Multi-Tenant Deployment
+
+ ```bash
+  ./scale-up-cas.sh viya04 "default"
+ ```
+</code></pre>
+<p><strong>Note:</strong> The tenant name for a non-multi deployment can be either &ldquo;default&rdquo; or &ldquo;provider&rdquo;.</p>
+<p>Ensure that all the required sas-cas-controller pods are scaled up, especially if you have multiple CAS controllers.</p>
+    </body>
+</html>

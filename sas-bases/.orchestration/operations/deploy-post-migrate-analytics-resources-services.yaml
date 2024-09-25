@@ -1,0 +1,21 @@
+apiVersion: orchestration.sas.com/v3beta1
+kind: LifecycleOperation
+metadata:
+  annotations:
+    sas.com/component-name: sas-analytics-resources
+    sas.com/component-version: 21.137.1-20231012.1697144483357
+  creationTimestamp: null
+  labels:
+    participate.lifecycle.sas.com/deploy-post: "true"
+  name: deploy-post-migrate-analytics-resources-services
+spec:
+  source: |-
+    package main
+
+    import (
+      "sas/orchestration/lifecycle"
+    )
+
+    func main() {
+      lifecycle.Log("Placeholder for deploy-post-migrate-analytics-resources-services")
+    }

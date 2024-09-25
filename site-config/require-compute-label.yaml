@@ -1,0 +1,15 @@
+apiVersion: builtin
+kind: PatchTransformer
+metadata:
+  name: require-compute-label
+patch: |-
+  - op: add
+    path: /template/spec/affinity/nodeAffinity/preferredDuringSchedulingIgnoredDuringExecution/0/preference/matchExpressions/- 
+    value:
+      key: workload.sas.com/uob
+      operator: In
+      values:
+      - compute
+target:
+  kind: PodTemplate
+  labelSelector: sas.com/template-intent=sas-launcher

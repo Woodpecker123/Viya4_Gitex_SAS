@@ -1,0 +1,19 @@
+labels:
+- pairs:
+    app.kubernetes.io/name: pgo
+    # The version below should match the version on the PostgresCluster CRD
+    app.kubernetes.io/version: 5.4.4
+  includeTemplates: true
+
+resources:
+- ../crd
+- ../rbac/namespace
+- ../manager
+
+patches:
+- path: manager-target.yaml
+# The functionality previously provided by sas-crunchy5-postgres-operator-upgrade
+# is now incorporated into the sas-crunchy5-postgres-operator DU
+# This package provides the needed CRD but we no longer want to deploy
+# the image defined in manager-target-upgrade.yaml
+# - path: manager-target-upgrade.yaml

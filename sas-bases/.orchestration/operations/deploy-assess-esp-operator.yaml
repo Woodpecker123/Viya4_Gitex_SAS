@@ -1,0 +1,29 @@
+apiVersion: orchestration.sas.com/v2beta10
+kind: LifecycleOperation
+metadata:
+  annotations:
+    sas.com/component-name: sas-esp-operator
+    sas.com/component-version: 10.729.2-20231109.1699565665573
+  creationTimestamp: null
+  labels:
+    participate.lifecycle.sas.com/deploy-assess: "true"
+  name: deploy-assess-esp-operator
+spec:
+  args:
+  - name: namespace
+  - name: manifest
+  steps:
+  - args:
+    - deploy-assess-esp-operator-execute
+    - --namespace
+    - $namespace
+    cmd: run
+    when: |-
+      (and
+        (.ManifestResource $manifest (((((.NewManifestResourcesIterationSpec).WithGroup "apps").WithVersion "v1").WithKind "StatefulSet").WithName "sas-esp-operator"))
+        (.ClusterResource ((((((.NewClusterResourcesIterationSpec).WithNamespace $namespace).WithGroup "apps").WithVersion "v1").WithResource "statefulset").WithName "sas-esp-operator"))
+        (ne
+          (.Annotation "sas.com/component-version" (.ManifestResource $manifest (((((.NewManifestResourcesIterationSpec).WithGroup "apps").WithVersion "v1").WithKind "StatefulSet").WithName "sas-esp-operator")))
+          (.Annotation "sas.com/component-version" (.ClusterResource ((((((.NewClusterResourcesIterationSpec).WithNamespace $namespace).WithGroup "apps").WithVersion "v1").WithResource "statefulset").WithName "sas-esp-operator")))
+        )
+      )

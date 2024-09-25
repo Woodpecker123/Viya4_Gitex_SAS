@@ -1,0 +1,17 @@
+---
+apiVersion: builtin
+kind: PatchTransformer
+metadata:
+  name: single-tenant-cronjob-rbac-rules
+patch: |-
+  - op: replace
+    path: /rules
+    value:
+      - apiGroups: [ "apps" ]
+        resources: [ "statefulsets" ]
+        verbs: [ "get", "list" ]
+target:
+  group: rbac.authorization.k8s.io
+  kind: Role
+  version: v1
+---

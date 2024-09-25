@@ -1,0 +1,169 @@
+
+---
+apiVersion: builtin
+kind: PatchTransformer
+metadata:
+  name: patch-transformer-27c062ae3025af3b
+patch: |-
+  - op: add
+    path: /spec/jobTemplate/spec/template/spec/initContainers
+    value: []
+target:
+  group: batch
+  kind: CronJob
+  name: sas-data-agent-server-tenant
+  version: v1
+---
+apiVersion: builtin
+kind: PatchTransformer
+metadata:
+  name: patch-transformer-bf2276c4ed0487bc
+patch: |-
+  - op: add
+    path: /spec/jobTemplate/spec/template/spec/containers/0/command
+    value: []
+target:
+  group: batch
+  kind: CronJob
+  name: sas-data-agent-server-tenant
+  version: v1
+---
+apiVersion: builtin
+kind: PatchTransformer
+metadata:
+  name: patch-transformer-0a496e3206653c74
+patch: |-
+  - op: add
+    path: /spec/jobTemplate/spec/template/spec/containers/0/args
+    value: []
+target:
+  group: batch
+  kind: CronJob
+  name: sas-data-agent-server-tenant
+  version: v1
+---
+apiVersion: builtin
+kind: PatchTransformer
+metadata:
+  name: patch-transformer-fc79a687f2755145
+patch: |-
+  - op: add
+    path: /spec/jobTemplate/spec/template/spec/containers/0/ports
+    value: []
+target:
+  group: batch
+  kind: CronJob
+  name: sas-data-agent-server-tenant
+  version: v1
+---
+apiVersion: builtin
+kind: PatchTransformer
+metadata:
+  name: patch-transformer-8dc20e48e169ac18
+patch: |-
+  - op: add
+    path: /spec/jobTemplate/spec/template/spec/containers/0/volumeDevices
+    value: []
+target:
+  group: batch
+  kind: CronJob
+  name: sas-data-agent-server-tenant
+  version: v1
+---
+apiVersion: builtin
+kind: PatchTransformer
+metadata:
+  name: patch-transformer-a592d3e3980bb8a9
+patch: |-
+  - op: add
+    path: /spec/jobTemplate/spec/template/spec/containers/0/securityContext/capabilities/add
+    value: []
+target:
+  group: batch
+  kind: CronJob
+  name: sas-data-agent-server-tenant
+  version: v1
+---
+apiVersion: builtin
+kind: PatchTransformer
+metadata:
+  name: patch-transformer-3538aaf0b4c4d999
+patch: |-
+  - op: add
+    path: /spec/jobTemplate/spec/template/spec/securityContext/supplementalGroups
+    value: []
+target:
+  group: batch
+  kind: CronJob
+  name: sas-data-agent-server-tenant
+  version: v1
+---
+apiVersion: builtin
+kind: PatchTransformer
+metadata:
+  name: patch-transformer-4d4c31b03ae0dcc0
+patch: |-
+  - op: add
+    path: /spec/jobTemplate/spec/template/spec/securityContext/sysctls
+    value: []
+target:
+  group: batch
+  kind: CronJob
+  name: sas-data-agent-server-tenant
+  version: v1
+---
+apiVersion: builtin
+kind: PatchTransformer
+metadata:
+  name: patch-transformer-4eaa2e3eb0a9c27a
+patch: |-
+  - op: add
+    path: /spec/jobTemplate/spec/template/spec/imagePullSecrets
+    value: []
+target:
+  group: batch
+  kind: CronJob
+  name: sas-data-agent-server-tenant
+  version: v1
+---
+apiVersion: builtin
+kind: PatchTransformer
+metadata:
+  name: patch-transformer-806e50fdbd08b577
+patch: |-
+  - op: add
+    path: /spec/jobTemplate/spec/template/spec/tolerations
+    value: []
+target:
+  group: batch
+  kind: CronJob
+  name: sas-data-agent-server-tenant
+  version: v1
+---
+apiVersion: builtin
+kind: PatchTransformer
+metadata:
+  name: patch-transformer-a4b2d440db406873
+patch: |-
+  - op: add
+    path: /spec/jobTemplate/spec/template/spec/hostAliases
+    value: []
+target:
+  group: batch
+  kind: CronJob
+  name: sas-data-agent-server-tenant
+  version: v1
+---
+apiVersion: builtin
+kind: PatchTransformer
+metadata:
+  name: patch-transformer-2f1f338f86410479
+patch: |-
+  - op: add
+    path: /spec/jobTemplate/spec/template/spec/readinessGates
+    value: []
+target:
+  group: batch
+  kind: CronJob
+  name: sas-data-agent-server-tenant
+  version: v1

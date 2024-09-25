@@ -1,0 +1,46 @@
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 300s
+    router.openshift.io/cookie-same-site: Lax
+    router.openshift.io/cookie_name: sas-ocp-forecastingComparison
+    sas.com/kustomize-base: base
+  labels:
+    app.kubernetes.io/name: sas-forecasting-comparison
+    sas.com/admin: namespace
+  name: sas-forecasting-comparison
+spec:
+  host: $(INGRESS_HOST)
+  path: /forecastingComparison
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: sas-forecasting-comparison
+  wildcardPolicy: None
+
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 300s
+    router.openshift.io/cookie-same-site: Lax
+    router.openshift.io/cookie_name: sas-ocp-forecastingComparison
+    sas.com/kustomize-base: base
+  labels:
+    app.kubernetes.io/name: sas-forecasting-comparison
+    sas.com/admin: namespace
+  name: sas-forecasting-comparison-multitenant
+spec:
+  host: wildcard.$(INGRESS_HOST)
+  path: /forecastingComparison
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: sas-forecasting-comparison
+  wildcardPolicy: Subdomain
+

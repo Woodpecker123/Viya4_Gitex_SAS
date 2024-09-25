@@ -1,0 +1,7 @@
+resources:
+- manager.yaml
+# The functionality previously provided by sas-crunchy5-postgres-operator-upgrade
+# is now incorporated into the sas-crunchy5-postgres-operator DU
+# This package provides the needed CRD but we no longer want to deploy
+# the image defined in manager-upgrade.yaml
+# - manager-upgrade.yaml

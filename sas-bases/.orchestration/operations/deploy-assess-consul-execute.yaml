@@ -1,0 +1,20 @@
+apiVersion: orchestration.sas.com/v2beta5
+kind: LifecycleOperation
+metadata:
+  annotations:
+    sas.com/component-name: sas-consul-server
+    sas.com/component-version: 1.1620002.0-20231009.1696872819205
+  creationTimestamp: null
+  name: deploy-assess-consul-execute
+spec:
+  args:
+  - name: namespace
+  steps:
+  - args:
+    - annotate
+    - --namespace
+    - $namespace
+    - configmap
+    - sas-deploy-lifecycle-operation-variables
+    - sas.com/sas-consul-server-update=true
+    cmd: kubectl

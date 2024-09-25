@@ -1,0 +1,142 @@
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sas-data-agent-server-tenant
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: sas-data-agent-server-tenant
+rules:
+- apiGroups:
+  - ""
+  - apps
+  - extensions
+  - rbac.authorization.k8s.io
+  - orchestration.sas.com
+  - policy
+  - route.openshift
+  - route.openshift.io
+  resources:
+  - podtemplates
+  - configmaps
+  - secrets
+  - deployments
+  - statefulsets
+  - services
+  - roles
+  - rolebindings
+  - serviceaccounts
+  - poddisruptionbudgets
+  - ingresses
+  - routes
+  - routes/custom-host
+  verbs:
+  - '*'
+- apiGroups:
+  - networking.k8s.io
+  resources:
+  - ingresses
+  verbs:
+  - list
+  - get
+  - create
+  - patch
+  - delete
+  - update
+  - deletecollection
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: sas-data-agent-server-tenant
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: sas-data-agent-server-tenant
+subjects:
+- kind: ServiceAccount
+  name: sas-data-agent-server-tenant
+
+---
+apiVersion: v1
+data:
+  SAS_DA_TENANT_OAUTH_SECRET: ""
+kind: Secret
+metadata:
+  annotations:
+    orchestration.sas.com/literal: "true"
+  name: sas-data-agent-server-tenant-secrets
+
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  labels:
+    app.kubernetes.io/name: sas-data-agent-server-tenant
+  name: sas-data-agent-server-tenant
+spec:
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - env:
+            - name: SAS_DA_TENANT_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: SAS_DA_TENANT_OAUTH_SECRET
+              valueFrom:
+                secretKeyRef:
+                  key: SAS_DA_TENANT_OAUTH_SECRET
+                  name: sas-data-agent-server-tenant-secrets
+            envFrom:
+            - configMapRef:
+                name: sas-go-config
+            - configMapRef:
+                name: sas-shared-config
+            - configMapRef:
+                name: sas-java-config
+            - configMapRef:
+                name: sas-data-agent-server-tenant-parameters
+            - configMapRef:
+                name: sas-data-agent-server-tenant-config
+            - secretRef:
+                name: sas-consul-client
+            - secretRef:
+                name: sas-data-agent-server-tenant-secrets
+            image: sas-data-agent-server-tenant
+            name: sas-data-agent-server-tenant
+            resources:
+              limits:
+                cpu: 500m
+                memory: 500Mi
+              requests:
+                cpu: 100m
+                memory: 100Mi
+            securityContext:
+              allowPrivilegeEscalation: false
+              capabilities:
+                drop:
+                - ALL
+              privileged: false
+              readOnlyRootFilesystem: true
+            volumeMounts:
+            - mountPath: /tmp
+              name: tmp-volume
+          restartPolicy: Never
+          securityContext:
+            runAsNonRoot: true
+            seccompProfile:
+              type: RuntimeDefault
+          serviceAccountName: sas-data-agent-server-tenant
+          volumes:
+          - emptyDir: {}
+            name: tmp-volume
+  schedule: 0 5 31 2 *
+  suspend: true

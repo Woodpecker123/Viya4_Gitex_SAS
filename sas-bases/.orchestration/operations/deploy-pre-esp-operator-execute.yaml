@@ -1,0 +1,47 @@
+apiVersion: orchestration.sas.com/v2beta10
+kind: LifecycleOperation
+metadata:
+  annotations:
+    sas.com/component-name: sas-esp-operator
+    sas.com/component-version: 10.729.2-20231109.1699565665573
+  creationTimestamp: null
+  name: deploy-pre-esp-operator-execute
+spec:
+  args:
+  - name: namespace
+  - name: timeout
+  steps:
+  - args:
+    - delete
+    - --namespace
+    - $namespace
+    - --wait
+    - --timeout
+    - $timeout
+    - --ignore-not-found
+    - espserver
+    - -l
+    - type=project
+    cmd: kubectl
+  - args:
+    - delete
+    - --namespace
+    - $namespace
+    - --wait
+    - --timeout
+    - $timeout
+    - --ignore-not-found
+    - deployment
+    - sas-esp-operator
+    cmd: kubectl
+  - args:
+    - delete
+    - --namespace
+    - $namespace
+    - --wait
+    - --timeout
+    - $timeout
+    - --ignore-not-found
+    - secret
+    - esp-saslogon
+    cmd: kubectl

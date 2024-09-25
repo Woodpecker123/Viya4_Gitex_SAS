@@ -1,0 +1,5 @@
+resources:
+- storage.yaml
+- podtemplate.yaml
+- sa.yaml
+- buildkit-client-certs.yaml

@@ -1,0 +1,68 @@
+namespace: sit 
+resources:
+- sas-bases/base
+- sas-bases/overlays/network/networking.k8s.io
+- sas-bases/overlays/cas-server
+- sas-bases/overlays/crunchydata/postgres-operator
+- sas-bases/overlays/postgres/platform-postgres
+# If your deployment contains SAS Viya Programming, comment out the next line
+- sas-bases/overlays/internal-elasticsearch
+- site-config/sas-open-source-config/python
+- site-config/sas-microanalytic-score/astores/resources.yaml
+configurations:
+- sas-bases/overlays/required/kustomizeconfig.yaml
+transformers:
+# If your deployment does not support privileged containers or if your deployment
+# contains SAS Viya Programming, comment out the next line
+- sas-bases/overlays/internal-elasticsearch/sysctl-transformer.yaml
+- site-config/sas-open-source-config/python/python-transformer.yaml
+- site-config/ephemeral/change-viya-volume-storage-class.yaml
+- sas-bases/overlays/required/transformers.yaml
+- site-config/mirror.yaml
+- site-config/ephemeral/cas_disk_cache-config.yaml
+- site-config/cas-server/cas-manage-cpu-and-memory.yaml
+- site-config/sasdata/compute-server-add-nfs-mount.yaml
+- site-config/sasdata/cas-add-nfs-mount.yaml
+#- site-config/cas-server/require-cas-label.yaml
+- sas-bases/overlays/scaling/single-replica/transformer.yaml
+- sas-bases/overlays/internal-elasticsearch/internal-elasticsearch-transformer.yaml
+- sas-bases/overlays/sas-microanalytic-score/astores/astores-transformer.yaml
+#- sas-bases/examples/sas-workload-orchestrator/enable-disable/sas-workload-orchestrator-disable-patch-transformer.yaml
+#- site-config/require-compute-label.yaml
+#- site-config/sas-esp-operator/espconfig/espconfig-env-variables.yaml
+- site-config/sas-esp-operator/espconfig/espconfig-properties.yaml
+- site-config/cas-server/cas-enable-external-services.yaml
+- sas-bases/examples/sas-workload-orchestrator/enable-disable/sas-workload-orchestrator-disable-patch-transformer.yaml
+patches:
+- path: site-config/storageclass.yaml
+  target:
+    kind: PersistentVolumeClaim
+    annotationSelector: sas.com/component-name in (sas-backup-job,sas-data-quality-services,sas-commonfiles,sas-cas-operator,sas-pyconfig)
+components:
+- sas-bases/components/crunchydata/internal-platform-postgres 
+# License information
+secretGenerator:
+- name: sas-license
+  type: sas.com/license
+  behavior: merge
+  files:
+  - SAS_LICENSE=SASViyaV4_9CVCWR_2_lts_2023.10_license_2024-07-13T045123.jwt
+- name: sas-image-pull-secrets
+  behavior: replace
+  type: kubernetes.io/dockerconfigjson
+  files:
+  - site-config/.dockerconfigjson
+configMapGenerator:
+- name: ingress-input
+  behavior: merge
+  literals:
+  - INGRESS_HOST=sit.woodpecker.com
+- name: sas-shared-config
+  behavior: merge
+  literals:
+  - SAS_SERVICES_URL=https://sit.woodpecker.com:443
+  # - SAS_URL_EXTERNAL_VIYA={{ EXTERNAL-PROXY-URL }}
+- name: input
+  behavior: merge
+  literals:
+  - IMAGE_REGISTRY=registry.woodpecker.com/internal_lts2023.10
