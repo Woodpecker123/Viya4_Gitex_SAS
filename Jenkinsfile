@@ -6,7 +6,8 @@ pipeline {
   stages {
     stage('Deploy') {
       steps {
-        sh 'kubectl -n sit apply -f site.yaml'
+        //sh 'kubectl -n sit apply -f site.yaml'
+         sh 'kubectl -n sit apply --server-side --force-conflicts -f site.yaml'
       }
     }
     
